@@ -1,14 +1,10 @@
 #
-# Cookbook Name:: ats
+# Cookbook Name:: trafficserver
 # Recipe:: default
 #
-# Copyright 2013, YOUR_COMPANY_NAME
-#
-# All rights reserved - Do Not Redistribute
-#
-case node['ats']['install_method']
-when 'repo'
-  install_recipe 'ats::repo'
+case node['trafficserver']['install_method']
+when 'git-repo'
+  include_recipe 'trafficserver::repo'
 end
 
 

@@ -1,1 +1,1 @@
-default['ats']['install_method'] = 'repo'
+default['trafficserver']['install_method'] = 'git-repo'
