@@ -1,22 +1,29 @@
 package "git"
 package "build-essential"
 package "autoconf"
-package "automake"
 package "libtool"
-package "g++"
 package "libssl-dev"
 package "tcl-dev"
 package "libpcre3-dev"
 package "libxml2-dev"
 
-script "install_ats" do
+localrepo_path = "#{Chef::Config[:file_cache_path]}/trafficserver"
+giturl = "https://github.com/apache/trafficserver.git"
+
+git localrepo_path do
+  repository giturl
+  reference "master"
+  action :sync
+end
+
+script "install_trafficserver" do
   interpreter "bash"
   user "root"
   code <<-EOH
-git clone https://github.com/apache/trafficserver.git
-cd trafficserver
+cd #{localrepo_path}
 autoreconf -if
 ./configure
 make && make install
 EOH
 end
+
