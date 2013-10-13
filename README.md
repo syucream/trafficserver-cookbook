@@ -35,19 +35,54 @@ e.g.
   </tr>
 </table>
 
+Quickstart (Using knife-solo)
+-----------------------------
+
+1. Install knife-solo
+
+  ```
+  $ gem install knife-solo
+  ```
+
+2. Prepare knife-solo on host
+
+  ```
+  $ knife solo prepare <host>
+  ```
+
+3. Initialize knife-solo
+
+  ```
+  $ knife solo init chef-repo
+  ```
+
+4. Clone trafficserver-cookbook
+
+  ```
+  $ cd /path/to/chef-repo
+  $ git clone https://github.com/syucream/trafficserver-cookbook trafficserver
+  ```
+
+5. Install trafficserver
+
+  ```
+  knife solo cook <host>
+  ```
+
 Usage
 -----
+
 #### ats::default
 TODO: Write usage instructions for each cookbook.
 
 e.g.
-Just include `ats` in your node's `run_list`:
+Just include `trafficserver` in your node's `run_list`:
 
 ```json
 {
   "name":"my_node",
   "run_list": [
-    "recipe[ats]"
+    "recipe[trafficserver]"
   ]
 }
 ```
