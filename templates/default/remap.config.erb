@@ -1,3 +1,3 @@
-<% node['trafficserver']['remap']['map'].each_pair do |cache, origin| -%>
-map    <%= cache %>    <%= origin %>
+<% node['trafficserver']['remap']['map'].each do |rule| -%>
+map    <%= rule['cache'] %>    <%= rule['origin'] %>    <%= rule['options'] if rule.has_key?('options') %>
 <% end -%>

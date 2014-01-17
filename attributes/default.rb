@@ -1,3 +1,4 @@
 default['trafficserver']['install_method'] = 'git-repo'
 
-default['trafficserver']['remap']['map'] = { 'http://cache.example.com' => 'http://origin.example.com' }
+# attributes for config file
+default['trafficserver']['remap']['map'] = [{ 'cache' => 'http://cache.example.com/', 'origin' => 'http://origin.example.com/' }]
