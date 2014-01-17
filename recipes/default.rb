@@ -7,4 +7,5 @@ when 'git-repo'
   include_recipe 'trafficserver::repo'
 end
 
+include_recipe 'trafficserver::conf'
 
