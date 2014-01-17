@@ -19,7 +19,7 @@ Attributes
 TODO: List you cookbook attributes here.
 
 e.g.
-#### ats::default
+#### trafficserver::default
 <table>
   <tr>
     <th>Key</th>
@@ -28,10 +28,16 @@ e.g.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['ats']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
+    <td><tt>['trafficserver']['install_method']</tt></td>
+    <td>String</td>
+    <td>The way of installation</td>
+    <td><tt>git-repo</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['trafficserver']['remap']['map']</tt></td>
+    <td>Array</td>
+    <td>Remap rules</td>
+    <td><tt></tt></td>
   </tr>
 </table>
 
