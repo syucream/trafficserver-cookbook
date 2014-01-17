@@ -1,0 +1,3 @@
+<% node['trafficserver']['remap']['map'].each_pair do |cache, origin| -%>
+map    <%= cache %>    <%= origin %>
+<% end -%>
