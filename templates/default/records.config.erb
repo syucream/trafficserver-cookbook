@@ -19,11 +19,11 @@
 # System Variables
 #
 ##############################################################################
-CONFIG proxy.config.proxy_name STRING @build_machine@
-CONFIG proxy.config.config_dir STRING @rel_sysconfdir@
+CONFIG proxy.config.proxy_name STRING <%= node['trafficserver']['record']['proxy_name'] %>
+CONFIG proxy.config.config_dir STRING <%= node['trafficserver']['record']['sysconfdir'] %>
 CONFIG proxy.config.proxy_binary_opts STRING -M
 CONFIG proxy.config.env_prep STRING example_prep.sh
-CONFIG proxy.config.alarm_email STRING @pkgsysuser@
+CONFIG proxy.config.alarm_email STRING nobody
 CONFIG proxy.config.syslog_facility STRING LOG_DAEMON
 CONFIG proxy.config.output.logfile STRING traffic.out
 CONFIG proxy.config.snapshot_dir STRING snapshots
@@ -45,7 +45,7 @@ CONFIG proxy.config.accept_threads INT 1
 ##############################################################################
 CONFIG proxy.config.admin.admin_user STRING admin
 CONFIG proxy.config.admin.number_config_bak INT 3
-CONFIG proxy.config.admin.user_id STRING @pkgsysuser@
+CONFIG proxy.config.admin.user_id STRING nobody
 ##############################################################################
 #
 # Process Manager
@@ -303,7 +303,7 @@ CONFIG proxy.config.body_factory.response_suppression_mode INT 0
 ##############################################################################
 CONFIG proxy.config.net.connections_throttle INT 30000
    # Enable defer accept / accept filtering. On Linux, this is a timeout, sec.
-CONFIG proxy.config.net.defer_accept INT @defer_accept@
+CONFIG proxy.config.net.defer_accept INT 45
 ##############################################################################
 #
 # Cluster Subsystem
@@ -318,7 +318,7 @@ CONFIG proxy.config.cluster.mcport INT 8089
 CONFIG proxy.config.cluster.mc_group_addr STRING 224.0.1.37
 CONFIG proxy.config.cluster.mc_ttl INT 1
 CONFIG proxy.config.cluster.log_bogus_mc_msgs INT 1
-CONFIG proxy.config.cluster.ethernet_interface STRING @default_loopback_iface@
+CONFIG proxy.config.cluster.ethernet_interface STRING lo
 ##############################################################################
 #
 # Cache
@@ -431,7 +431,7 @@ CONFIG proxy.config.log.max_space_mb_for_logs INT 25000
 CONFIG proxy.config.log.max_space_mb_for_orphan_logs INT 25
 CONFIG proxy.config.log.max_space_mb_headroom INT 1000
 CONFIG proxy.config.log.hostname STRING localhost
-CONFIG proxy.config.log.logfile_dir STRING @rel_logdir@
+CONFIG proxy.config.log.logfile_dir STRING <%= node['trafficserver']['record']['logdir'] %>
 CONFIG proxy.config.log.logfile_perm STRING rw-r--r--
 CONFIG proxy.config.log.custom_logs_enabled INT 0
 CONFIG proxy.config.log.squid_log_enabled INT 1
@@ -518,31 +518,31 @@ CONFIG proxy.config.ssl.client.certification_level INT 0
 CONFIG proxy.config.ssl.server.cert_chain.filename STRING NULL
    # This is the path that SSL certificates files are relative to. Certificate
    # names specified in ssl_multicert.config will be located relative to this path.
-CONFIG proxy.config.ssl.server.cert.path STRING @rel_sysconfdir@
+CONFIG proxy.config.ssl.server.cert.path STRING <%= node['trafficserver']['record']['sysconfdir'] %>
    # If any private key is not contained in the certificate file, you must
    # fill in the private key path. Private key names specified in
    # ssl_multicert.config will be located relative to this path.
-CONFIG proxy.config.ssl.server.private_key.path STRING @rel_sysconfdir@
+CONFIG proxy.config.ssl.server.private_key.path STRING <%= node['trafficserver']['record']['sysconfdir'] %>
    # The CA file name and path are the
    # certificate authority certificate that
    # client certificates will be verified against.
 CONFIG proxy.config.ssl.CA.cert.filename STRING NULL
-CONFIG proxy.config.ssl.CA.cert.path STRING @rel_sysconfdir@
+CONFIG proxy.config.ssl.CA.cert.path STRING <%= node['trafficserver']['record']['sysconfdir'] %>
    ################################
    # client related configuration #
    ################################
 CONFIG proxy.config.ssl.client.verify.server INT 0
 CONFIG proxy.config.ssl.client.cert.filename STRING NULL
-CONFIG proxy.config.ssl.client.cert.path STRING @rel_sysconfdir@
+CONFIG proxy.config.ssl.client.cert.path STRING <%= node['trafficserver']['record']['sysconfdir'] %>
    # Fill in private key file and path only if the client's
    # private key is not contained in the client certificate file.
 CONFIG proxy.config.ssl.client.private_key.filename STRING NULL
-CONFIG proxy.config.ssl.client.private_key.path STRING @rel_sysconfdir@
+CONFIG proxy.config.ssl.client.private_key.path STRING <%= node['trafficserver']['record']['sysconfdir'] %>
    # The CA file name and path are the
    # certificate authority certificate that
    # server certificates will be verified against.
 CONFIG proxy.config.ssl.client.CA.cert.filename STRING NULL
-CONFIG proxy.config.ssl.client.CA.cert.path STRING @rel_sysconfdir@
+CONFIG proxy.config.ssl.client.CA.cert.path STRING <%= node['trafficserver']['record']['sysconfdir'] %>
 ##############################################################################
 #
 # ICP Configuration. NOTE! ICP is currently broken NOTE!
