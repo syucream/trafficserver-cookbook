@@ -2,7 +2,7 @@ default['trafficserver']['install_method'] = 'git-repo'
 
 # attributes for config file
 default['trafficserver']['record']['proxy_name'] = "trafficserver"
-default['trafficserver']['records']['port'] = "8080"
+default['trafficserver']['records']['server_ports'] = "8080"
 default['trafficserver']['record']['logdir'] = "var/log/trafficserver"
 default['trafficserver']['record']['certification_level'] = "0"
 default['trafficserver']['record']['sysconfdir'] = "etc/trafficserver"
