@@ -19,8 +19,8 @@
 # System Variables
 #
 ##############################################################################
-CONFIG proxy.config.proxy_name STRING <%= node['trafficserver']['record']['proxy_name'] %>
-CONFIG proxy.config.config_dir STRING <%= node['trafficserver']['record']['sysconfdir'] %>
+CONFIG proxy.config.proxy_name STRING <%= node['trafficserver']['records']['proxy_name'] %>
+CONFIG proxy.config.config_dir STRING <%= node['trafficserver']['records']['sysconfdir'] %>
 CONFIG proxy.config.proxy_binary_opts STRING -M
 CONFIG proxy.config.env_prep STRING example_prep.sh
 CONFIG proxy.config.alarm_email STRING nobody
@@ -110,7 +110,7 @@ CONFIG proxy.config.alarm.abs_path STRING NULL
    # port at address 192.168.1.56 on port 8080.
    # "80:ipv4:tr-full tr-full:80:ipv6 443:ipv4:ssl 443:ssl:ipv6 ip-in=192.168.1.56:8080"
    #
-CONFIG proxy.config.http.server_ports STRING <%= node['trafficserver']['record']['server_ports'] %>
+CONFIG proxy.config.http.server_ports STRING <%= node['trafficserver']['records']['server_ports'] %>
    # Ports on the origin server to which a blind tunnel may connect.
 CONFIG proxy.config.http.connect_ports STRING 443 563
    # The via settings have four values
@@ -431,7 +431,7 @@ CONFIG proxy.config.log.max_space_mb_for_logs INT 25000
 CONFIG proxy.config.log.max_space_mb_for_orphan_logs INT 25
 CONFIG proxy.config.log.max_space_mb_headroom INT 1000
 CONFIG proxy.config.log.hostname STRING localhost
-CONFIG proxy.config.log.logfile_dir STRING <%= node['trafficserver']['record']['logdir'] %>
+CONFIG proxy.config.log.logfile_dir STRING <%= node['trafficserver']['records']['logdir'] %>
 CONFIG proxy.config.log.logfile_perm STRING rw-r--r--
 CONFIG proxy.config.log.custom_logs_enabled INT 0
 CONFIG proxy.config.log.squid_log_enabled INT 1
@@ -511,38 +511,38 @@ CONFIG proxy.config.ssl.compression INT 0
    # 0 no client certificates
    # 1 client certificates optional
    # 2 client certificates required
-   CONFIG proxy.config.ssl.client.certification_level INT <%= node['trafficserver']['record']['certification_level'] %>
+   CONFIG proxy.config.ssl.client.certification_level INT <%= node['trafficserver']['records']['certification_level'] %>
    # Server cert chain filename is the name of the global cert chain file
    # that is added to every cert in ssl_multicert.config. This file is only
    # loaded if there are configurations in ssl_multicert.config.
 CONFIG proxy.config.ssl.server.cert_chain.filename STRING NULL
    # This is the path that SSL certificates files are relative to. Certificate
    # names specified in ssl_multicert.config will be located relative to this path.
-CONFIG proxy.config.ssl.server.cert.path STRING <%= node['trafficserver']['record']['sysconfdir'] %>
+CONFIG proxy.config.ssl.server.cert.path STRING <%= node['trafficserver']['records']['sysconfdir'] %>
    # If any private key is not contained in the certificate file, you must
    # fill in the private key path. Private key names specified in
    # ssl_multicert.config will be located relative to this path.
-CONFIG proxy.config.ssl.server.private_key.path STRING <%= node['trafficserver']['record']['sysconfdir'] %>
+CONFIG proxy.config.ssl.server.private_key.path STRING <%= node['trafficserver']['records']['sysconfdir'] %>
    # The CA file name and path are the
    # certificate authority certificate that
    # client certificates will be verified against.
 CONFIG proxy.config.ssl.CA.cert.filename STRING NULL
-CONFIG proxy.config.ssl.CA.cert.path STRING <%= node['trafficserver']['record']['sysconfdir'] %>
+CONFIG proxy.config.ssl.CA.cert.path STRING <%= node['trafficserver']['records']['sysconfdir'] %>
    ################################
    # client related configuration #
    ################################
 CONFIG proxy.config.ssl.client.verify.server INT 0
 CONFIG proxy.config.ssl.client.cert.filename STRING NULL
-CONFIG proxy.config.ssl.client.cert.path STRING <%= node['trafficserver']['record']['sysconfdir'] %>
+CONFIG proxy.config.ssl.client.cert.path STRING <%= node['trafficserver']['records']['sysconfdir'] %>
    # Fill in private key file and path only if the client's
    # private key is not contained in the client certificate file.
 CONFIG proxy.config.ssl.client.private_key.filename STRING NULL
-CONFIG proxy.config.ssl.client.private_key.path STRING <%= node['trafficserver']['record']['sysconfdir'] %>
+CONFIG proxy.config.ssl.client.private_key.path STRING <%= node['trafficserver']['records']['sysconfdir'] %>
    # The CA file name and path are the
    # certificate authority certificate that
    # server certificates will be verified against.
 CONFIG proxy.config.ssl.client.CA.cert.filename STRING NULL
-CONFIG proxy.config.ssl.client.CA.cert.path STRING <%= node['trafficserver']['record']['sysconfdir'] %>
+CONFIG proxy.config.ssl.client.CA.cert.path STRING <%= node['trafficserver']['records']['sysconfdir'] %>
 ##############################################################################
 #
 # ICP Configuration. NOTE! ICP is currently broken NOTE!
