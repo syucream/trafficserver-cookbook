@@ -511,7 +511,7 @@ CONFIG proxy.config.ssl.compression INT 0
    # 0 no client certificates
    # 1 client certificates optional
    # 2 client certificates required
-CONFIG proxy.config.ssl.client.certification_level INT 0
+   CONFIG proxy.config.ssl.client.certification_level INT <%= node['trafficserver']['record']['certification_level'] %>
    # Server cert chain filename is the name of the global cert chain file
    # that is added to every cert in ssl_multicert.config. This file is only
    # loaded if there are configurations in ssl_multicert.config.
