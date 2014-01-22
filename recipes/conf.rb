@@ -10,3 +10,8 @@ template "/usr/local/etc/trafficserver/remap.config" do
   group "nogroup"
 end
 
+template "/usr/local/etc/trafficserver/ssl_multicert.config" do
+  source "ssl_multicert.config.erb"
+  owner "nobody"
+  group "nogroup"
+end
