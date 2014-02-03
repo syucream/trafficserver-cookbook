@@ -1,13 +1,3 @@
-package "git"
-package "build-essential"
-package "autoconf"
-package "libtool"
-package "libcap2"
-package "libssl-dev"
-package "tcl-dev"
-package "libpcre3-dev"
-package "libxml2-dev"
-
 localrepo_path = "#{Chef::Config[:file_cache_path]}/trafficserver"
 giturl = "https://github.com/apache/trafficserver.git"
 
