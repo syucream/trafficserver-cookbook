@@ -1,3 +1,3 @@
 <% node['trafficserver']['remap']['map'].each do |rule| -%>
-map    <%= rule['ts'] %>    <%= rule['origin'] %>    <%= rule['options'] if rule.has_key?('options') %>
+<%= rule['type'] %> <%= rule['target'] %> <%= rule['replacement'] %> <%= rule['options'] if rule.has_key?('options') %>
 <% end -%>
